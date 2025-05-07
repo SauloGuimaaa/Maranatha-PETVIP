@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+/* Fontes personalizadas */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* Cores personalizadas */
+:root {
+  --azul-maranatha: #063c8f;
+  --vermelho-maranatha: #cf0707;
+  --bege-claro: #f5eee6;
+}
+
+/* Animação de fade-in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
