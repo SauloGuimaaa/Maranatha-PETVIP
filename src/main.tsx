@@ -1,6 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom'; // Importe o BrowserRouter
+import { HashRouter } from 'react-router-dom'; // Alterado para HashRouter
 import './index.css';
 import App from './App';
 
@@ -11,9 +11,9 @@ if (rootElement) {
   
   root.render(
     <StrictMode>
-      <BrowserRouter basename="/nome-do-repositorio"> {/* 👈 Adicione aqui */}
+      <HashRouter basename={import.meta.env.PROD ? '/Maranatha-PETVIP' : '/'}>
         <App />
-      </BrowserRouter>
+      </HashRouter>
     </StrictMode>
   );
 } else {
