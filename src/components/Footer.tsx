@@ -25,45 +25,45 @@ const Footer = () => {
 
           {/* Coluna 2 - PETVIP Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 text-orange-100">PETVIP</h3>
+            <h3 className="text-lg font-semibold mb-6 text-[#f5eee6]">PETVIP</h3>
             <ul className="space-y-3">
-              <li><a href="#planos" className="text-gray-400 hover:text-orange-500 transition-colors">Planos</a></li>
-              <li><a href="#beneficios" className="text-gray-400 hover:text-orange-500 transition-colors">Benefícios</a></li>
-              <li><a href="#como-funciona" className="text-gray-400 hover:text-orange-500 transition-colors">Como funciona</a></li>
-              <li><a href="#faq" className="text-gray-400 hover:text-orange-500 transition-colors">FAQ</a></li>
+              <li><a href="#planos" className="text-gray-400 hover:text-[#cf0707] transition-colors">Planos</a></li>
+              <li><a href="#beneficios" className="text-gray-400 hover:text-[#cf0707] transition-colors">Benefícios</a></li>
+              <li><a href="#como-funciona" className="text-gray-400 hover:text-[#cf0707] transition-colors">Como funciona</a></li>
+              <li><a href="#faq" className="text-gray-400 hover:text-[#cf0707] transition-colors">FAQ</a></li>
             </ul>
           </div>
 
           {/* Coluna 3 - Institucional */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 text-orange-100">Institucional</h3>
+            <h3 className="text-lg font-semibold mb-6 text-[#f5eee6]">Institucional</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="text-gray-400 hover:text-orange-500 transition-colors">Sobre nós</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-orange-500 transition-colors">Nossas lojas</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-orange-500 transition-colors">Trabalhe conosco</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-orange-500 transition-colors">Política de privacidade</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-[#cf0707] transition-colors">Sobre nós</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-[#cf0707] transition-colors">Nossas lojas</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-[#cf0707] transition-colors">Trabalhe conosco</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-[#cf0707] transition-colors">Política de privacidade</a></li>
             </ul>
           </div>
 
           {/* Coluna 4 - Contato */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 text-orange-100">Atendimento</h3>
+            <h3 className="text-lg font-semibold mb-6 text-[#f5eee6]">Atendimento</h3>
             <ul className="space-y-3 text-gray-400">
               <li className="flex items-start">
-                <FaPhoneAlt className="flex-shrink-0 w-5 h-5 text-orange-500 mr-2 mt-0.5" />
+                <FaPhoneAlt className="flex-shrink-0 w-5 h-5 text-[#cf0707] mr-2 mt-0.5" />
                 <span>(67) 4042-4262</span>
               </li>
               <li className="flex items-start">
                 <a 
                   href="mailto:lojavirtual@maranathapetshop.com.br?subject=Contato%20via%20Site%20PETVIP" 
-                  className="hover:text-orange-500 transition-colors flex items-start"
+                  className="hover:text-[#cf0707] transition-colors flex items-start"
                 >
-                  <FaEnvelope className="flex-shrink-0 w-5 h-5 text-orange-500 mr-2 mt-0.5" />
+                  <FaEnvelope className="flex-shrink-0 w-5 h-5 text-[#cf0707] mr-2 mt-0.5" />
                   <span>lojavirtual@maranathapetshop.com.br</span>
                 </a>
               </li>
               <li className="flex items-start">
-                <FaMapMarkerAlt className="flex-shrink-0 w-5 h-5 text-orange-500 mr-2 mt-0.5" />
+                <FaMapMarkerAlt className="flex-shrink-0 w-5 h-5 text-[#cf0707] mr-2 mt-0.5" />
                 <span>Avenida Capibaribe, 822 - Campo Grande/MS</span>
               </li>
             </ul>
@@ -79,7 +79,7 @@ const Footer = () => {
               target="_blank" 
               rel="noopener noreferrer"
               aria-label="Facebook"
-              className="text-white bg-gray-800 hover:bg-orange-600 w-12 h-12 rounded-full inline-flex items-center justify-center transition-all transform hover:-translate-y-1"
+              className="text-white bg-gray-800 hover:bg-[#cf0707] w-12 h-12 rounded-full inline-flex items-center justify-center transition-all transform hover:-translate-y-1"
             >
               <FaFacebookF className="text-xl" />
             </a>
@@ -88,7 +88,7 @@ const Footer = () => {
               target="_blank" 
               rel="noopener noreferrer"
               aria-label="Instagram"
-              className="text-white bg-gray-800 hover:bg-orange-600 w-12 h-12 rounded-full inline-flex items-center justify-center transition-all transform hover:-translate-y-1"
+              className="text-white bg-gray-800 hover:bg-[#cf0707] w-12 h-12 rounded-full inline-flex items-center justify-center transition-all transform hover:-translate-y-1"
             >
               <FaInstagram className="text-xl" />
             </a>
@@ -97,7 +97,7 @@ const Footer = () => {
               target="_blank" 
               rel="noopener noreferrer"
               aria-label="WhatsApp"
-              className="text-white bg-gray-800 hover:bg-orange-600 w-12 h-12 rounded-full inline-flex items-center justify-center transition-all transform hover:-translate-y-1"
+              className="text-white bg-gray-800 hover:bg-[#cf0707] w-12 h-12 rounded-full inline-flex items-center justify-center transition-all transform hover:-translate-y-1"
             >
               <FaWhatsapp className="text-xl" />
             </a>
@@ -113,7 +113,7 @@ const Footer = () => {
 
         {/* Direitos reservados */}
         <div className="border-t border-gray-800 pt-8 mt-8 text-center text-gray-500 text-sm">
-          <p>© 1999 Petshop Maranatha. Todos os direitos reservados.</p>
+          <p>© {new Date().getFullYear()} Petshop Maranatha. Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>
