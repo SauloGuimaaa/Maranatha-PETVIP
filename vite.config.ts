@@ -4,5 +4,5 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: '/Maranatha-PETVIP', // Substitua pelo nome do seu repositório
+  base: '/Maranatha-PETVIP/', // Substitua pelo nome do seu repositório
 });
