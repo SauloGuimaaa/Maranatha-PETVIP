@@ -1,4 +1,5 @@
 
+import maracaoImage from '../assets/images/MARACAO.png';
 const HeroSection = () => {
   return (
     <div className="relative overflow-hidden">
@@ -41,11 +42,7 @@ const HeroSection = () => {
           {/* Imagem do produto */}
           <div className="relative">
             <div className="relative w-full h-80 md:h-96 lg:h-[500px]">
-              <img 
-                src="./assets/images/MARACAO.png" 
-                alt="Caixa surpresa para pets" 
-                className="absolute w-full h-full object-contain object-center animate-float"
-              />
+            <img src={maracaoImage} alt="Caixa surpresa para pets" className="absolute w-full h-full object-contain object-center animate-float" />
               <div className="absolute -bottom-6 -right-6 bg-[#e8d9c5] rounded-full w-32 h-32 z-0 opacity-30"></div>
               <div className="absolute -top-6 -left-6 bg-[#f5eee6] rounded-full w-24 h-24 z-0 opacity-30"></div>
             </div>

@@ -1,5 +1,6 @@
 import {FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaFacebookF, FaInstagram, FaWhatsapp, FaCcVisa, FaCcMastercard } from 'react-icons/fa';
 import { FaPix } from 'react-icons/fa6';
+import maranathaLogo from '../assets/images/Maranatha-logo.png';
 
 const Footer = () => {
   return (
@@ -10,11 +11,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Coluna 1 - Logo e sobre */}
           <div>
-            <img 
-              src="./assets/images/Maranatha-logo.png" 
-              alt="Petshop Maranatha" 
-              className="h-24 mb-6"
-            />
+          <img src={maranathaLogo} alt="Petshop Maranatha" className="h-24 mb-6" />
             <p className="text-gray-400 mb-4 italic">
               Cuidando do seu pet com amor desde 1999
             </p>
