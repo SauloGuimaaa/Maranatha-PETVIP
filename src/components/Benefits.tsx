@@ -1,5 +1,27 @@
+import { useLocation } from 'react-router-dom';
 
 const BenefitsSection = () => {
+  const location = useLocation();
+
+  const scrollToPlanos = () => {
+    // Se já estamos na mesma página, faz o scroll diretamente
+    if (location.pathname === '/Maranatha-PETVIP/' || location.pathname === '/') {
+      setTimeout(() => {
+        const planosSection = document.getElementById('planos');
+        if (planosSection) {
+          const headerHeight = 80; // Ajuste conforme necessário
+          const elementPosition = planosSection.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
+    }
+  };
+
   return (
     <section className="py-16 md:py-24 bg-[#f5eee6]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -102,7 +124,10 @@ const BenefitsSection = () => {
           <p className="text-lg text-gray-600 mb-8 max-w-3xl mx-auto">
             <span className="font-bold text-[#cf0707]">+500 pets felizes</span> em todo o Brasil já desfrutam dos benefícios do PETVIP. Não deixe o seu de fora!
           </p>
-          <button className="bg-[#cf0707] hover:bg-[#b30606] text-white font-bold py-4 px-8 rounded-full text-lg transition-all transform hover:scale-105 shadow-lg">
+          <button 
+            onClick={scrollToPlanos}
+            className="bg-[#cf0707] hover:bg-[#b30606] text-white font-bold py-4 px-8 rounded-full text-lg transition-all transform hover:scale-105 shadow-lg"
+          >
             Quero Assinar Agora!
           </button>
         </div>

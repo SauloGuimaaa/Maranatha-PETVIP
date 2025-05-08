@@ -1,6 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { HashRouter } from 'react-router-dom'; // Alterado para HashRouter
+import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 
@@ -11,9 +11,9 @@ if (rootElement) {
   
   root.render(
     <StrictMode>
-      <HashRouter>
+      <BrowserRouter basename="/Maranatha-PETVIP">
         <App />
-      </HashRouter>
+      </BrowserRouter>
     </StrictMode>
   );
 } else {
