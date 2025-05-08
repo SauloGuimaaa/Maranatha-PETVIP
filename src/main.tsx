@@ -11,7 +11,7 @@ if (rootElement) {
   
   root.render(
     <StrictMode>
-      <HashRouter basename={import.meta.env.PROD ? '/Maranatha-PETVIP' : '/'}>
+      <HashRouter>
         <App />
       </HashRouter>
     </StrictMode>
