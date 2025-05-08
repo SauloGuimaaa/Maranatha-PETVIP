@@ -42,7 +42,7 @@ const HeroSection = () => {
           <div className="relative">
             <div className="relative w-full h-80 md:h-96 lg:h-[500px]">
               <img 
-                src="/images/pet-box-hero.png" 
+                src="public/assets/images/MARACAO.png" 
                 alt="Caixa surpresa para pets" 
                 className="absolute w-full h-full object-contain object-center animate-float"
               />
