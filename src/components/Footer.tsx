@@ -11,7 +11,7 @@ const Footer = () => {
           {/* Coluna 1 - Logo e sobre */}
           <div>
             <img 
-              src="public/assets/images/Maranatha-logo.png" 
+              src="./assets/images/Maranatha-logo.png" 
               alt="Petshop Maranatha" 
               className="h-24 mb-6"
             />
