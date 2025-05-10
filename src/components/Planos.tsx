@@ -1,6 +1,20 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+type Kit = {
+  id: string;
+  nome: string;
+  preco: number;
+  icon: string;
+  descricao: string;
+  imagem: string;
+};
+
+type PlanoImagem = {
+  id: string;
+  imagem: string;
+};
+
 export default function PlanoPetshopMaranatha() {
   const [kitExtras, setKitExtras] = useState<string[]>([]);
   const [total, setTotal] = useState(79.9);
@@ -8,13 +22,50 @@ export default function PlanoPetshopMaranatha() {
   const [petType, setPetType] = useState('cachorro');
   const [petSize, setPetSize] = useState('pequeno');
   const [isNeutered, setIsNeutered] = useState('sim');
+  const [kitPreview, setKitPreview] = useState<string | null>(null);
+  const [planoImagemSelecionada, setPlanoImagemSelecionada] = useState<string>('plano1');
   const navigate = useNavigate();
 
-  const kitsDisponiveis = [
-    { id: 'kit_dental', nome: 'Kit Dental', preco: 19.9, icon: '🦷' },
-    { id: 'kit_petiscos', nome: 'Kit Petiscos', preco: 24.9, icon: '🍖' },
-    { id: 'kit_brinquedos', nome: 'Kit Brinquedos', preco: 29.9, icon: '🎾' },
-    { id: 'kit_higiene', nome: 'Kit Higiene', preco: 34.9, icon: '🧼' },
+  const imagensPlanos: PlanoImagem[] = [
+    { id: 'plano1', imagem: '/assets/images/CACHORRO.png' },
+    { id: 'plano2', imagem: '/assets/images/GATO-ADULTO.png' },
+    { id: 'plano3', imagem: '/assets/images/GATO-FILHOTE.png' },
+    { id: 'plano4', imagem: '/assets/plano-familia.jpg' },
+  ];
+
+  const kitsDisponiveis: Kit[] = [
+    { 
+      id: 'kit_dental', 
+      nome: 'Kit Dental', 
+      preco: 19.9, 
+      icon: '🦷',
+      descricao: 'Inclui escova dental especial e pasta para pets',
+      imagem: '/assets/kit-dental.png'
+    },
+    { 
+      id: 'kit_petiscos', 
+      nome: 'Kit Petiscos', 
+      preco: 24.9, 
+      icon: '🍖',
+      descricao: 'Seleção de petiscos naturais e saudáveis',
+      imagem: '/assets/kit-petiscos.png'
+    },
+    { 
+      id: 'kit_brinquedos', 
+      nome: 'Kit Brinquedos', 
+      preco: 29.9, 
+      icon: '🎾',
+      descricao: 'Brinquedos resistentes para diversão prolongada',
+      imagem: '/assets/kit-brinquedos.png'
+    },
+    { 
+      id: 'kit_higiene', 
+      nome: 'Kit Higiene', 
+      preco: 34.9, 
+      icon: '🧼',
+      descricao: 'Produtos de limpeza e cuidados especiais',
+      imagem: '/assets/kit-higiene.png'
+    },
   ];
 
   const handleKitChange = (id: string) => {
@@ -48,8 +99,16 @@ export default function PlanoPetshopMaranatha() {
     navigate('/login?from=subscribe');
   };
 
+  const showKitPreview = (id: string) => {
+    setKitPreview(id);
+  };
+
+  const hideKitPreview = () => {
+    setKitPreview(null);
+  };
+
   return (
-    <section id="planos" className="max-w-4xl mx-auto px-4 py-8" style={{ backgroundColor: '#f5eee6' }}>
+    <section id="planos" className="max-w-6xl mx-auto px-4 py-8" style={{ backgroundColor: '#f5eee6' }}>
       <div className="text-center mb-10">
         <h2 className="text-3xl md:text-4xl font-bold text-[#063c8f] mb-2">Planos Maranatha Pet</h2>
         <p className="text-lg text-gray-700">Cuidamos do seu pet com todo amor e profissionalismo</p>
@@ -73,48 +132,36 @@ export default function PlanoPetshopMaranatha() {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8">
-        {/* Card de Informações do Plano */}
-        <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-[#e8d9c5]">
-          <div className="bg-[#063c8f] p-6 text-white">
-            <h3 className="text-2xl font-bold mb-1">Plano Premium</h3>
-            <div className="flex items-end">
-              <span className="text-4xl font-bold">
-                R$ {activeTab === 'anual' ? '69,90' : '79,90'}
-              </span>
-              <span className="ml-2 text-lg opacity-90">/{activeTab === 'anual' ? 'ano' : 'mês'}</span>
+      <div className="grid md:grid-cols-3 gap-8">
+        {/* Seletor de Imagens do Plano - Estilo Nerd ao Cubo */}
+        <div className="flex flex-col space-y-4">
+          {imagensPlanos.map((plano) => (
+            <div
+              key={plano.id}
+              onClick={() => setPlanoImagemSelecionada(plano.id)}
+              className={`cursor-pointer transition-all border-2 rounded-lg overflow-hidden ${
+                planoImagemSelecionada === plano.id 
+                  ? 'border-[#063c8f]' 
+                  : 'border-transparent hover:border-gray-300'
+              }`}
+            >
+              <img 
+                src={plano.imagem} 
+                alt="Plano visual"
+                className="w-full h-auto object-cover"
+              />
             </div>
-            {activeTab === 'anual' && (
-              <div className="mt-2 text-sm bg-white/20 px-2 py-1 rounded inline-block">
-                Economize R$ 120,00 no ano
-              </div>
-            )}
-          </div>
+          ))}
+        </div>
 
-          <div className="p-6">
-            <h4 className="font-semibold text-lg text-[#063c8f] mb-3">Benefícios Inclusos:</h4>
-            <ul className="space-y-3">
-              <li className="flex items-start">
-                <span className="text-[#cf0707] mr-2">✓</span>
-                <span>Consulta veterinária mensal</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-[#cf0707] mr-2">✓</span>
-                <span>Banho e tosa premium</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-[#cf0707] mr-2">✓</span>
-                <span>Desconto em produtos (20%)</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-[#cf0707] mr-2">✓</span>
-                <span>Vacinação anual</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-[#cf0707] mr-2">✓</span>
-                <span>Exames laboratoriais básicos</span>
-              </li>
-            </ul>
+        {/* Card de Imagem Principal - Ocupa todo o espaço */}
+        <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-[#e8d9c5]">
+          <div className="h-full w-full">
+            <img
+              src={imagensPlanos.find(p => p.id === planoImagemSelecionada)?.imagem || '/assets/plano-premium.jpg'}
+              alt="Plano selecionado"
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
 
@@ -177,6 +224,8 @@ export default function PlanoPetshopMaranatha() {
               {kitsDisponiveis.map(kit => (
                 <div
                   key={kit.id}
+                  onMouseEnter={() => showKitPreview(kit.id)}
+                  onMouseLeave={hideKitPreview}
                   onClick={() => handleKitChange(kit.id)}
                   className={`p-3 rounded-lg border cursor-pointer transition-all ${kitExtras.includes(kit.id) ? 'border-[#063c8f] bg-[#f5eee6]' : 'border-gray-300 hover:border-[#063c8f]'}`}
                 >
@@ -190,6 +239,32 @@ export default function PlanoPetshopMaranatha() {
                 </div>
               ))}
             </div>
+
+            {/* Preview do Kit */}
+            {kitPreview && (
+              <div className="mt-4 p-4 bg-[#f5eee6] rounded-lg border border-[#e8d9c5] animate-fade-in">
+                {kitsDisponiveis.map(kit => (
+                  kit.id === kitPreview && (
+                    <div key={kit.id} className="flex flex-col md:flex-row gap-4">
+                      <div className="flex-shrink-0">
+                        <img 
+                          src={kit.imagem} 
+                          alt={kit.nome}
+                          className="w-32 h-32 object-contain rounded-lg border border-[#e8d9c5]"
+                        />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-[#063c8f]">{kit.nome}</h4>
+                        <p className="text-sm text-gray-700 mt-1">{kit.descricao}</p>
+                        <div className="mt-2 text-sm font-medium text-[#cf0707]">
+                          + R$ {kit.preco.toFixed(2).replace('.', ',')}
+                        </div>
+                      </div>
+                    </div>
+                  )
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Resumo */}
@@ -224,11 +299,11 @@ export default function PlanoPetshopMaranatha() {
           </div>
 
           <button 
-           onClick={handleSubscribe}
-           className="w-full bg-[#cf0707] text-white py-3 rounded-lg font-bold hover:bg-[#b30606] transition-all shadow-md"
-           >
-          ASSINAR AGORA
-        </button>
+            onClick={handleSubscribe}
+            className="w-full bg-[#cf0707] text-white py-3 rounded-lg font-bold hover:bg-[#b30606] transition-all shadow-md"
+          >
+            ASSINAR AGORA
+          </button>
         </div>
       </div>
     </section>
