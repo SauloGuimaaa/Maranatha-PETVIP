@@ -27,10 +27,10 @@ export default function PlanoPetshopMaranatha() {
   const navigate = useNavigate();
 
   const imagensPlanos: PlanoImagem[] = [
-    { id: 'plano1', imagem: '/assets/images/CACHORRO.png' },
-    { id: 'plano2', imagem: '/assets/images/GATO-ADULTO.png' },
-    { id: 'plano3', imagem: '/assets/images/GATO-FILHOTE.png' },
-    { id: 'plano4', imagem: '/assets/plano-familia.jpg' },
+    { id: 'plano1', imagem: 'assets/images/CACHORRO.KIT.png' },
+    { id: 'plano2', imagem: 'assets/images/GATO.ADULTO.png' },
+    { id: 'plano3', imagem: 'assets/images/GATO.FILHOTE.png' },
+    { id: 'plano4', imagem: 'assets/images/caica.surpresa.png' },
   ];
 
   const kitsDisponiveis: Kit[] = [
@@ -114,7 +114,6 @@ export default function PlanoPetshopMaranatha() {
         <p className="text-lg text-gray-700">Cuidamos do seu pet com todo amor e profissionalismo</p>
       </div>
 
-      {/* Tabs de periodicidade */}
       <div className="flex justify-center mb-8">
         <div className="inline-flex bg-[#e8d9c5] rounded-full p-1">
           <button
@@ -132,14 +131,14 @@ export default function PlanoPetshopMaranatha() {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-8">
-        {/* Seletor de Imagens do Plano - Estilo Nerd ao Cubo */}
+      <div className="grid md:grid-cols-[150px_1fr_350px] gap-8">
+        {/* Miniaturas laterais */}
         <div className="flex flex-col space-y-4">
           {imagensPlanos.map((plano) => (
             <div
               key={plano.id}
               onClick={() => setPlanoImagemSelecionada(plano.id)}
-              className={`cursor-pointer transition-all border-2 rounded-lg overflow-hidden ${
+              className={`cursor-pointer transition-all border-2 rounded-lg overflow-hidden aspect-square ${
                 planoImagemSelecionada === plano.id 
                   ? 'border-[#063c8f]' 
                   : 'border-transparent hover:border-gray-300'
@@ -148,101 +147,129 @@ export default function PlanoPetshopMaranatha() {
               <img 
                 src={plano.imagem} 
                 alt="Plano visual"
-                className="w-full h-auto object-cover"
+                className="w-full h-full object-cover"
               />
             </div>
           ))}
         </div>
 
-        {/* Card de Imagem Principal - Ocupa todo o espaço */}
-        <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-[#e8d9c5]">
-          <div className="h-full w-full">
-            <img
-              src={imagensPlanos.find(p => p.id === planoImagemSelecionada)?.imagem || '/assets/plano-premium.jpg'}
-              alt="Plano selecionado"
-              className="w-full h-full object-cover"
-            />
-          </div>
+        {/* Imagem principal com altura fixa */}
+        <div className="bg-white rounded-xl shadow-lg overflow-hidden" style={{ height: '600px' }}>
+          <img
+            src={imagensPlanos.find(p => p.id === planoImagemSelecionada)?.imagem || '/assets/plano-premium.jpg'}
+            alt="Plano selecionado"
+            className="w-full h-full object-contain p-4"
+          />
         </div>
 
-        {/* Formulário de Personalização */}
-        <div className="bg-white rounded-xl shadow-lg p-6 border border-[#e8d9c5]">
-          <h3 className="text-xl font-bold text-[#063c8f] mb-6">Personalize seu Plano</h3>
+        {/* Formulário de personalização com altura fixa */}
+        <div className="bg-white rounded-xl shadow-lg border border-[#e8d9c5] relative" style={{ height: '600px' }}>
+          <div className="p-6 h-full flex flex-col overflow-hidden">
+            <div className="overflow-y-auto flex-1">
+              <h3 className="text-xl font-bold text-[#063c8f] mb-6">Personalize seu Plano</h3>
 
-          {/* Tipo do Pet */}
-          <div className="mb-6">
-            <label className="block text-gray-700 font-medium mb-3">Tipo do Pet</label>
-            <div className="grid grid-cols-2 gap-3">
-              {['cachorro', 'gato'].map(type => (
-                <button
-                  key={type}
-                  onClick={() => setPetType(type)}
-                  className={`py-2 px-4 rounded-lg border transition-all ${petType === type ? 'border-[#063c8f] bg-[#f5eee6] text-[#063c8f]' : 'border-gray-300 hover:border-[#063c8f]'}`}
-                >
-                  {type === 'cachorro' ? '🐶 Cachorro' : '🐱 Gato'}
-                </button>
-              ))}
-            </div>
-          </div>
+              <div className="mb-6">
+                <label className="block text-gray-700 font-medium mb-3">Tipo do Pet</label>
+                <div className="grid grid-cols-2 gap-3">
+                  {['cachorro', 'gato'].map(type => (
+                    <button
+                      key={type}
+                      onClick={() => setPetType(type)}
+                      className={`py-2 px-4 rounded-lg border transition-all ${petType === type ? 'border-[#063c8f] bg-[#f5eee6] text-[#063c8f]' : 'border-gray-300 hover:border-[#063c8f]'}`}
+                    >
+                      {type === 'cachorro' ? '🐶 Cachorro' : '🐱 Gato'}
+                    </button>
+                  ))}
+                </div>
+              </div>
 
-          {/* Porte do Pet */}
-          <div className="mb-6">
-            <label className="block text-gray-700 font-medium mb-3">Porte do Pet</label>
-            <div className="grid grid-cols-3 gap-3">
-              {['pequeno', 'medio', 'grande'].map(size => (
-                <button
-                  key={size}
-                  onClick={() => setPetSize(size)}
-                  className={`py-2 px-2 rounded-lg border transition-all text-sm ${petSize === size ? 'border-[#063c8f] bg-[#f5eee6] text-[#063c8f]' : 'border-gray-300 hover:border-[#063c8f]'}`}
-                >
-                  {size === 'pequeno' ? 'Pequeno' : size === 'medio' ? 'Médio' : 'Grande'}
-                </button>
-              ))}
-            </div>
-          </div>
+              <div className="mb-6">
+                <label className="block text-gray-700 font-medium mb-3">Porte do Pet</label>
+                <div className="grid grid-cols-3 gap-3">
+                  {['pequeno', 'medio', 'grande'].map(size => (
+                    <button
+                      key={size}
+                      onClick={() => setPetSize(size)}
+                      className={`py-2 px-2 rounded-lg border transition-all text-sm ${petSize === size ? 'border-[#063c8f] bg-[#f5eee6] text-[#063c8f]' : 'border-gray-300 hover:border-[#063c8f]'}`}
+                    >
+                      {size === 'pequeno' ? 'Pequeno' : size === 'medio' ? 'Médio' : 'Grande'}
+                    </button>
+                  ))}
+                </div>
+              </div>
 
-          {/* Pet Castrado */}
-          <div className="mb-6">
-            <label className="block text-gray-700 font-medium mb-3">Pet Castrado?</label>
-            <div className="grid grid-cols-2 gap-3">
-              {['sim', 'nao'].map(option => (
-                <button
-                  key={option}
-                  onClick={() => setIsNeutered(option)}
-                  className={`py-2 px-4 rounded-lg border transition-all ${isNeutered === option ? 'border-[#063c8f] bg-[#f5eee6] text-[#063c8f]' : 'border-gray-300 hover:border-[#063c8f]'}`}
-                >
-                  {option === 'sim' ? 'Sim' : 'Não'}
-                </button>
-              ))}
-            </div>
-          </div>
+              <div className="mb-6">
+                <label className="block text-gray-700 font-medium mb-3">Pet Castrado?</label>
+                <div className="grid grid-cols-2 gap-3">
+                  {['sim', 'nao'].map(option => (
+                    <button
+                      key={option}
+                      onClick={() => setIsNeutered(option)}
+                      className={`py-2 px-4 rounded-lg border transition-all ${isNeutered === option ? 'border-[#063c8f] bg-[#f5eee6] text-[#063c8f]' : 'border-gray-300 hover:border-[#063c8f]'}`}
+                    >
+                      {option === 'sim' ? 'Sim' : 'Não'}
+                    </button>
+                  ))}
+                </div>
+              </div>
 
-          {/* Kits Extras */}
-          <div className="mb-8">
-            <label className="block text-gray-700 font-medium mb-3">Kits Extras</label>
-            <div className="grid grid-cols-2 gap-3">
-              {kitsDisponiveis.map(kit => (
-                <div
-                  key={kit.id}
-                  onMouseEnter={() => showKitPreview(kit.id)}
-                  onMouseLeave={hideKitPreview}
-                  onClick={() => handleKitChange(kit.id)}
-                  className={`p-3 rounded-lg border cursor-pointer transition-all ${kitExtras.includes(kit.id) ? 'border-[#063c8f] bg-[#f5eee6]' : 'border-gray-300 hover:border-[#063c8f]'}`}
-                >
-                  <div className="flex items-center">
-                    <span className="text-xl mr-2">{kit.icon}</span>
-                    <div>
-                      <div className="font-medium">{kit.nome}</div>
-                      <div className="text-sm text-gray-600">+ R$ {kit.preco.toFixed(2).replace('.', ',')}</div>
+              <div className="mb-8">
+                <label className="block text-gray-700 font-medium mb-3">Kits Extras</label>
+                <div className="grid grid-cols-2 gap-3">
+                  {kitsDisponiveis.map(kit => (
+                    <div
+                      key={kit.id}
+                      onMouseEnter={() => showKitPreview(kit.id)}
+                      onMouseLeave={hideKitPreview}
+                      onClick={() => handleKitChange(kit.id)}
+                      className={`p-3 rounded-lg border cursor-pointer transition-all ${kitExtras.includes(kit.id) ? 'border-[#063c8f] bg-[#f5eee6]' : 'border-gray-300 hover:border-[#063c8f]'}`}
+                    >
+                      <div className="flex items-center">
+                        <span className="text-xl mr-2">{kit.icon}</span>
+                        <div>
+                          <div className="font-medium">{kit.nome}</div>
+                          <div className="text-sm text-gray-600">+ R$ {kit.preco.toFixed(2).replace('.', ',')}</div>
+                        </div>
+                      </div>
                     </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-[#f5eee6] rounded-lg p-4 mb-6 border border-[#e8d9c5]">
+                <h4 className="font-semibold text-[#063c8f] mb-3">Resumo da Assinatura</h4>
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <span>Plano {activeTab === 'anual' ? 'Anual' : 'Mensal'}:</span>
+                    <span className="font-medium">R$ {activeTab === 'anual' ? '69,90' : '79,90'}</span>
+                  </div>
+                  
+                  {kitExtras.length > 0 && (
+                    <div className="pt-2 border-t border-[#e8d9c5]">
+                      <p className="text-sm text-gray-600 mb-1">Extras:</p>
+                      {kitExtras.map(id => {
+                        const kit = kitsDisponiveis.find(k => k.id === id);
+                        return (
+                          <div key={id} className="flex justify-between text-sm">
+                            <span>+ {kit?.nome}</span>
+                            <span>R$ {kit?.preco.toFixed(2).replace('.', ',')}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+                  
+                  <div className="pt-2 border-t border-[#e8d9c5] font-semibold flex justify-between">
+                    <span>Total:</span>
+                    <span className="text-[#cf0707]">R$ {total.toFixed(2).replace('.', ',')}/{activeTab === 'anual' ? 'ano' : 'mês'}</span>
                   </div>
                 </div>
-              ))}
+              </div>
             </div>
 
-            {/* Preview do Kit */}
+            {/* Preview do Kit posicionado absolutamente */}
             {kitPreview && (
-              <div className="mt-4 p-4 bg-[#f5eee6] rounded-lg border border-[#e8d9c5] animate-fade-in">
+              <div className="absolute bottom-20 left-6 right-6 bg-[#f5eee6] rounded-lg border border-[#e8d9c5] p-4 z-10">
                 {kitsDisponiveis.map(kit => (
                   kit.id === kitPreview && (
                     <div key={kit.id} className="flex flex-col md:flex-row gap-4">
@@ -265,45 +292,14 @@ export default function PlanoPetshopMaranatha() {
                 ))}
               </div>
             )}
-          </div>
 
-          {/* Resumo */}
-          <div className="bg-[#f5eee6] rounded-lg p-4 mb-6 border border-[#e8d9c5]">
-            <h4 className="font-semibold text-[#063c8f] mb-3">Resumo da Assinatura</h4>
-            <div className="space-y-2">
-              <div className="flex justify-between">
-                <span>Plano {activeTab === 'anual' ? 'Anual' : 'Mensal'}:</span>
-                <span className="font-medium">R$ {activeTab === 'anual' ? '69,90' : '79,90'}</span>
-              </div>
-              
-              {kitExtras.length > 0 && (
-                <div className="pt-2 border-t border-[#e8d9c5]">
-                  <p className="text-sm text-gray-600 mb-1">Extras:</p>
-                  {kitExtras.map(id => {
-                    const kit = kitsDisponiveis.find(k => k.id === id);
-                    return (
-                      <div key={id} className="flex justify-between text-sm">
-                        <span>+ {kit?.nome}</span>
-                        <span>R$ {kit?.preco.toFixed(2).replace('.', ',')}</span>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-              
-              <div className="pt-2 border-t border-[#e8d9c5] font-semibold flex justify-between">
-                <span>Total:</span>
-                <span className="text-[#cf0707]">R$ {total.toFixed(2).replace('.', ',')}/{activeTab === 'anual' ? 'ano' : 'mês'}</span>
-              </div>
-            </div>
+            <button 
+              onClick={handleSubscribe}
+              className="w-full bg-[#cf0707] text-white py-3 rounded-lg font-bold hover:bg-[#b30606] transition-all shadow-md mt-4"
+            >
+              ASSINAR AGORA
+            </button>
           </div>
-
-          <button 
-            onClick={handleSubscribe}
-            className="w-full bg-[#cf0707] text-white py-3 rounded-lg font-bold hover:bg-[#b30606] transition-all shadow-md"
-          >
-            ASSINAR AGORA
-          </button>
         </div>
       </div>
     </section>
