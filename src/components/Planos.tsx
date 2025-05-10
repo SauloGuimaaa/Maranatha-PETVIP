@@ -30,7 +30,7 @@ export default function PlanoPetshopMaranatha() {
     { id: 'plano1', imagem: 'assets/images/CACHORRO.KIT.png' },
     { id: 'plano2', imagem: 'assets/images/GATO.ADULTO.png' },
     { id: 'plano3', imagem: 'assets/images/GATO.FILHOTE.png' },
-    { id: 'plano4', imagem: 'assets/images/caica.surpresa.png' },
+    { id: 'plano4', imagem: 'assets/images/caixa.surpresa.png' },
   ];
 
   const kitsDisponiveis: Kit[] = [
@@ -155,10 +155,10 @@ export default function PlanoPetshopMaranatha() {
 
         {/* Imagem principal com altura fixa */}
         <div className="bg-white rounded-xl shadow-lg overflow-hidden" style={{ height: '600px' }}>
-          <img
+            <img
             src={imagensPlanos.find(p => p.id === planoImagemSelecionada)?.imagem || '/assets/plano-premium.jpg'}
             alt="Plano selecionado"
-            className="w-full h-full object-contain p-4"
+            className="w-full h-full object-cover"
           />
         </div>
 

@@ -1,6 +1,6 @@
 import {FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaFacebookF, FaInstagram, FaWhatsapp, FaCcVisa, FaCcMastercard } from 'react-icons/fa';
 import { FaPix } from 'react-icons/fa6';
-import maranathaLogo from '../assets/images/Maranatha-logo.png';
+import maranathaLogo from '../assets/images/Maranatha.logo.png';
 
 const Footer = () => {
   return (
